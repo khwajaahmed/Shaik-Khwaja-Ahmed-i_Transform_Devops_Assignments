@@ -1,0 +1,9 @@
+def x = 1+2
+println "$x-"+x.getClass().getName()
+
+
+
+output:
+
+PS C:\Users\prabhas\Desktop\Groovy assignment> groovy ./number_datatype_b.groovy
+3-java.lang.Integer

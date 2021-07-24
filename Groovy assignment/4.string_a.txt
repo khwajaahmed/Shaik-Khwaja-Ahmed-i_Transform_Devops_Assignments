@@ -1,0 +1,5 @@
+println "Hello,Groovy!".size()
+
+output:
+PS C:\Users\prabhas\Desktop\Groovy assignment> groovy 4.string_a.groovy
+14

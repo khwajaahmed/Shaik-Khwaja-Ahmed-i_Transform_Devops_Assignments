@@ -1,0 +1,9 @@
+String str="Hello, World. How are you?"
+ar=str.split()
+println "length is "+ar.size()
+
+
+output:
+
+PS C:\Users\prabhas\Desktop\Groovy assignment> groovy ./4.string_d.groovy
+length is 5

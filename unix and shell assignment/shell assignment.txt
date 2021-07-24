@@ -1,0 +1,389 @@
+# ass 1
+
+#echo $USER
+#echo $HOME
+#echo $HISTCONTROL 
+#echo $TERM
+
+
+
+
+# ass 2
+ 
+ read -p "username :" user_name
+ read -sp "password :" password
+ echo username : $username 
+ echo password : $password 
+ dt=$(date)
+ echo "START OF SCRIPT :$dt " >> text1.sh
+ echo "END OF SCRIPT :$dt" >>text.sh 
+ echo $dt 
+  
+
+# ass 3
+
+var1=10
+var2=20
+echo $var1
+echo $var2 
+
+
+
+#ass 4
+
+echo "sentence 1"
+echo " sentence 2 " > /dev/null # sentence 2 redirects to /dev/null 
+
+
+
+# ass 5
+
+var1=10
+var2=20
+
+var3=$((var1+var2))
+echo "first arithmatic"
+
+read file
+echo $file
+if [ -f $file ]
+then 
+ rm "$file"
+ else 
+ echo "failure"
+ fi 
+
+ var4=$((var2+var3))
+ echo "second arithmatic"
+ 
+
+
+ # ass 6
+ 
+expr 5 + 5
+expr 5 + 5 \* 4
+expr \( 5 + 5 \) \* 4
+
+
+
+#ass 7
+
+shopt -s expand_aliases
+alias TODAY="date"
+alias UFILES="find /home  -ass7.txt ass7.txt"
+
+TODAYSDATE= 'date'
+USERFILES= 'find /home -ass7.txt ass7.txt '
+ 
+echo "Today's Date: $TODAYSDATE"
+echo "All Files owned by USER: $USERFILES"
+
+A='TODAY'
+B='UFILES'
+
+echo "with Alias, TODAY is: $A"
+echo "with Alias, UFILES is: $B"
+
+
+
+ #ass 8
+ 
+ echo -e "FIRSTNAME:\c"
+ read first_name
+ echo -e "LASTNAME:\c"
+ read last_name
+ echo -e "USERAGE:ahmed\c "
+ read user_age
+ age_after=$((user_age + 10))
+ echo " Hello $first_name $last_name -- $user_age and your age after 10 years is $age_after"
+  
+
+
+ # ass 9
+ 
+   SERVICELIST=(TIM COOK JOE JIM) 
+   i=0
+   until [ $i -eq ${#SERVICELIST[@]} ] 
+   do 
+   echo ${SERVICELIST[i]} 
+   ((i++))
+   done
+  
+
+
+
+ # ass 10
+   
+   read -p "USERNAME :" user_name 
+   read -sp "PASSWORD :" p_word 
+   echo -e "\ndone"
+   echo -e "user name -$user_name \npassword-$p_word"
+   
+
+
+
+ # ass 11
+   
+   read -p "enter the guess number :" number
+   test_number=2
+   if [ $number -eq $test_number ]
+   then 
+   echo " SUCCESS, the number $number you guess is right"
+   else
+   echo "sorry! wrong number"
+   fi 
+   
+
+
+ # ass 12 
+
+
+echo "Enter the number between 1 and 3:"
+read value 
+ if [ "$value" -eq "1" ] 2>/dev/null;
+ then 
+ echo "you entered 1"
+ elif [ "$value" -eq "2" ] 2>/dev/null;
+ then 
+ echo "you entered 2"
+ elif [ "$value" -eq "3" ] 2>/dev/null;
+ then 
+ echo "you entered 3"
+ else
+ echo "you didnot enter correct number!"
+ fi 
+ 
+
+
+
+# ass 13
+
+
+echo "list all the shell script contents of the directory"
+ SHELLSCRIPTS='ls *.sh'
+ for SCRIPT in $SHELLSCRIPTS; do
+ DISPLAY="cat $SCRIPT"
+ echo "File:$SCRIPT - CONTENTS $DISPLAY"
+ done
+ 
+
+
+ # ass 14
+   
+   items=(bike car van)
+   echo "select any one from the list"
+   for i in ${items[@]} 
+   do 
+   echo "$i"
+   done 
+   read -p "select the item :" item
+   case $item in
+   "car" )
+   echo " The rent of car is 1000 rupees";;
+   "bike" )
+   echo " The rent of bike is 500 rupees";;
+   "van" )
+   echo "The rent of van is 2000 rupees";;
+   * ) 
+   echo "unknown item" ;;
+   esac
+   
+
+
+
+ #ass 15
+  
+    read -p "enter a nmber:" var 
+    while [ $var -ne 0 ]
+    do 
+    echo "just a message $var"
+    ((var--))
+    done 
+    
+
+
+
+ # ass 16
+    
+    while read p
+    do 
+    echo $p
+    done < ass16.txt 
+     
+
+
+
+ #ass 17
+    
+echo "enter name to read:"
+read file 
+ exec 5<>$file 
+  while 
+  read -r SUPERHERO;
+  do 
+  echo "superheroname: $superhero"
+  done <&5
+  echo "File was read on: 'date'" >&5
+  exec 5>&-
+  
+
+
+ # ass 18
+  
+ echo "Enter filename: "
+read FILE
+echo "Enter delimiter: "
+read DELIM  
+IFS="$DELIM"
+while 
+  read -r CPU MEMORY DISK; 
+  do 
+  echo "CPU: $CPU"
+  echo "MEMORY: $MEMORY"
+  echo "Disk: $DISK"
+  done <"$FILE"
+  
+
+
+     
+ #ass 19 
+    
+     trap "echo signal detected" SIGINIT SIGTSTP 9 15 
+     choices=(car bike van exit)
+     select item in ${choices[@]} 
+     do 
+      echo $item 
+      case $item in
+      exit ) ;;
+      car ) 
+      echo $item 
+      for cmd in clear  
+      do 
+      $cmd 
+      done;;
+      bike )
+      for cmd in clear 
+      do 
+      $cmd 
+      done;;
+      van )
+      for cmd in clear 
+      do 
+      $cmd 
+      done;;
+      * ) echo "select the correct option";;
+      esac 
+      done 
+      exit 0  
+     
+ #ass 20
+     
+      echo "change to a directory and list the contents"
+      DIRECTORY=$1
+cd $DIRECTORY 2>/dev/null
+if [ "$?" = "0" ]; then 
+echo "We can change into the directory $DIRECTORY, and here are the contents"
+echo "ls -al"
+else 
+echo "Cannot change directories, exiting with an error and no listing"
+exit 111
+fi
+
+ 
+
+#ass 21
+       
+      fun(){
+          echo "first function"
+      } 
+      echo "second line" 
+      echo "third line"
+      fun
+      : ' 
+      #ass 22
+      : '
+      fun(){
+          local var1=5
+          echo "local variable in function $var1"
+          echo "global var in function $1"
+      } 
+      var2=8
+      echo "global variable before calling function $var2"
+      echo "local variable before calling function $var1"
+      echo "calling function "
+      fun $var2 
+      echo "after calling function"
+      echo "global variable before calling function $var2"
+      echo "local variable before calling function $var1"
+      
+
+
+
+ #ass 23
+      
+      fun(){
+       local age=$1
+       local total_days_in_years=365
+       in_days=$((age*total_days_in_year))
+        
+       return $in_days 
+      }
+      confirm(){
+          local age=$1 
+          local name=$2
+          echo -e "is this your name $name and age $age is correct[y/n] : \c"
+          read choice 
+          if [ $choice = 'y' ]
+          then 
+          fun $age 
+          echo "your name $name and age $age and your age in days $in_days"
+          elif [ $choice = 'n' ] 
+          then
+          echo "run again and enter correct details "
+          else 
+          echo "run again and enter proper choice"
+          fi 
+      }
+       echo -e "enter your name:\c"
+       read name 
+       echo -e "what is your age: \c"
+       read age 
+       confirm $age $name 
+      
+
+ 
+ # ass 24
+      
+      gender(){
+          local no_of_arms=2
+          local no_of_legs=2
+          if [ $1 = 'male' ]
+          then 
+          echo 'male'
+          male $no_of_arms $no_of_legs 
+          elif [ $1 = 'female' ] 
+          then 
+          echo 'female'
+          female $no_of_arms $no_of_legs 
+          else 
+          echo "error"
+          fi 
+
+      }
+       male(){
+           arms=$1
+           legs=$2
+           beards="has a beard"
+           echo -e "characteristics of male:\nno of arms = $arms\nno of legs = $legs\n$beards"
+       }
+       female(){
+           arms=$1
+           legs=$2
+           beards="no beard"
+           echo -e "characteristics of male:\nno of arms = $arms\nno of legs = $legs\n$beards"
+
+       }
+      echo -e "enter the gender :\c"
+      read gender_details
+      gender $gender_details 
+            

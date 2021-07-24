@@ -1,0 +1,10 @@
+String name="Ahmed"
+println "Hello $name"
+println "hello "+name
+println "Hello ".concat("Ahmed")
+
+output:
+PS C:\Users\prabhas\Desktop\Groovy assignment> groovy 4.string_b.groovy
+Hello Ahmed
+hello Ahmed
+Hello Ahmed

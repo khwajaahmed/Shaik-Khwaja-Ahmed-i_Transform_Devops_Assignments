@@ -1,0 +1,22 @@
+print "enter the user name: "
+def user_name=System.console().readLine()
+
+print "enter the password: "
+def password=System.console().readLine()
+def id=user_name+":"+password
+//println id
+byte[] encoded=Base64.getEncoder().encode(id.getBytes())
+println "Encoded bytes data is --> $encoded"
+j=new String(Base64.getDecoder().decode(encoded))
+words=j.split(":")
+user=words[0]
+pssd=words[1]
+println "Decoded User_name --> $user || Password -->$pssd"
+
+output:
+
+PS C:\Users\prabhas\Desktop\Groovy assignment> groovy ./encode_decode.groovy
+enter the user name: ahmed
+enter the password: 123
+Encoded bytes data is --> [89, 87, 104, 116, 90, 87, 81, 54, 77, 84, 73, 122]
+Decoded User_name --> ahmed || Password -->123
